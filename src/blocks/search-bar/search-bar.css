@@ -1,0 +1,27 @@
+.search-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  max-width: 608px;
+  background-color: #fff;
+  border-radius: 128px;
+  margin: 0 -1px;
+}
+
+@media screen and (max-width: 1440px) {
+  .search-bar {
+    max-width: 448px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-bar {
+    max-width: 288px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+    border-radius: 0;
+    background-color: transparent;
+  }
+}

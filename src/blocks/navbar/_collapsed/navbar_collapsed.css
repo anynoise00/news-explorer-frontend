@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+  .navbar_collapsed {
+    color: inherit;
+    background-color: transparent;
+    grid-template-rows: 56px auto;
+    grid-template-areas:
+      'logo toggle'
+      'separator separator';
+  }
+}

@@ -1,0 +1,26 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 80px 32px 80px 416px;
+  color: #fff;
+  background-image: url('../../images/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1440px) {
+  .search {
+    padding: 66px 32px 48px 163px;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    padding: 56px 16px 32px 16px;
+    gap: 12px;
+  }
+}

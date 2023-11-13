@@ -1,0 +1,20 @@
+.news {
+  display: flex;
+  align-items: center;
+  padding: 80px 104px;
+  gap: 64px;
+}
+
+@media screen and (max-width: 1440px) {
+  .news {
+    padding: 40px;
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news {
+    padding: 32px 16px 24px;
+    gap: 16px;
+  }
+}

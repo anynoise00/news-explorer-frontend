@@ -1,0 +1,12 @@
+@import url('../../blocks/btn/btn.css');
+@import url('../../blocks/btn/_type/btn_type_submit.css');
+
+@import url('../../blocks/section/section.css');
+
+@import url('../../blocks/search/search.css');
+@import url('../../blocks/search/__header/search__header.css');
+@import url('../../blocks/search/__subheader/search__subheader.css');
+
+@import url('../../blocks/search-bar/search-bar.css');
+@import url('../../blocks/search-bar/__field/search-bar__field.css');
+@import url('../../blocks/search-bar/__btn/search-bar__btn.css');

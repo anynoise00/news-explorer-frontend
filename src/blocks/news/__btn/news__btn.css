@@ -1,0 +1,23 @@
+.news__btn {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 288px;
+  min-height: 64px;
+  border-radius: 80px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1440px) {
+  .news__btn {
+    max-width: 240px;
+    min-height: 56px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news__btn {
+    max-width: 288px;
+  }
+}

@@ -1,0 +1,7 @@
+.news-card__action-btn_type_remove {
+  background-image: url('../../../../images/icon_trash_normal.svg');
+}
+
+.news-card__action-btn_type_remove:hover {
+  background-image: url('../../../../images/icon_trash_hover.svg');
+}

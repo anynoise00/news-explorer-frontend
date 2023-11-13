@@ -1,0 +1,30 @@
+.form__text-field {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #00000033;
+  padding-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+}
+
+.form__text-field::-webkit-input-placeholder {
+  color: #00000066;
+}
+
+.form__text-field::-moz-placeholder {
+  color: #00000066;
+}
+
+.form__text-field:-ms-input-placeholder {
+  color: #00000066;
+}
+
+.form__text-field::-ms-input-placeholder {
+  color: #00000066;
+}
+
+.form__text-field::placeholder {
+  color: #00000066;
+}

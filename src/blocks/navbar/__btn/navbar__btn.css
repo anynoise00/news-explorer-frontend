@@ -1,0 +1,28 @@
+.navbar__btn {
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 240px;
+  color: inherit;
+  width: 176px;
+  height: 48px;
+  border: 1px solid;
+  border-color: inherit;
+}
+
+.navbar__btn:hover {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1440px) {
+  .navbar__btn {
+    width: 152px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__btn {
+    min-width: 288px;
+    min-height: 56px;
+  }
+}

@@ -1,0 +1,8 @@
+@import url('../../blocks/btn/btn.css');
+
+@import url('../../blocks/news-card/__btn-container/news-card__btn-container.css');
+@import url('../../blocks/news-card/__action-btn/news-card__action-btn.css');
+@import url('../../blocks/news-card/__action-btn/_type/news-card__action-btn_type_bookmark.css');
+@import url('../../blocks/news-card/__action-btn/_type/news-card__action-btn_type_marked.css');
+@import url('../../blocks/news-card/__action-btn/_type/news-card__action-btn_type_remove.css');
+@import url('../../blocks/news-card/__confirm-btn/news-card__confirm-btn.css');

@@ -1,0 +1,25 @@
+.news-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  width: 400px;
+  height: 576px;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+  .news-card {
+    max-width: 224px;
+    height: 420px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news-card {
+    max-width: 288px;
+    height: 440px;
+  }
+}

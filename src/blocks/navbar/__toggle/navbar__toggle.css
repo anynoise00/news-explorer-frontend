@@ -1,0 +1,20 @@
+.navbar__toggle {
+  grid-area: toggle;
+  display: none;
+  justify-self: flex-end;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../images/icon_menu-white.svg');
+  background-color: transparent;
+  z-index: 2;
+}
+
+.navbar__toggle:hover {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__toggle {
+    display: block;
+  }
+}

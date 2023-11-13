@@ -1,0 +1,7 @@
+@import url('../../blocks/section/section.css');
+
+@import url('../../blocks/about/about.css');
+@import url('../../blocks/about/__image/about__image.css');
+@import url('../../blocks/about/__info/about__info.css');
+@import url('../../blocks/about/__header/about__header.css');
+@import url('../../blocks/about/__text/about__text.css');

@@ -1,0 +1,27 @@
+.news-card__description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  white-space: pre-line;
+
+  grid-area: description;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  padding-top: 8px;
+}
+
+@media screen and (max-width: 1440px) {
+  .news-card__description {
+    -webkit-line-clamp: 3;
+    padding-top: 4px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news-card__description {
+    padding-top: 14px;
+  }
+}

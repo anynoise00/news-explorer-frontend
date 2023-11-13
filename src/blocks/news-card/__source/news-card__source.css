@@ -1,0 +1,15 @@
+.news-card__source {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: pre-line;
+
+  grid-area: author;
+  align-self: flex-end;
+  font-family: 'Roboto Slab', serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}

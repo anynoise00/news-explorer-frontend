@@ -1,0 +1,20 @@
+.news__header {
+  font-size: 40px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  line-height: 46px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1440px) {
+  .news__header {
+    font-size: 30px;
+    line-height: 34px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news__header {
+    padding-bottom: 42px;
+  }
+}
