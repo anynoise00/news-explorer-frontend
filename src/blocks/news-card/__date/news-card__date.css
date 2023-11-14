@@ -1,10 +1,6 @@
 .news-card__date {
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  white-space: pre-line;
-
+  text-overflow: nowrap;
   grid-area: date;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 18px;

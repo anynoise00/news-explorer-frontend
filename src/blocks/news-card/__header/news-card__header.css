@@ -1,10 +1,6 @@
 .news-card__header {
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  white-space: pre-line;
-
+  max-height: 90px;
   grid-area: header;
   font-family: 'Roboto Slab', serif;
   font-size: 26px;
@@ -15,7 +11,7 @@
 
 @media screen and (max-width: 1440px) {
   .news-card__header {
-    -webkit-line-clamp: 4;
+    max-height: 96px;
     font-size: 18px;
     line-height: 24px;
     padding-top: 14px;
@@ -24,7 +20,7 @@
 
 @media screen and (max-width: 768px) {
   .news-card__header {
-    -webkit-line-clamp: 2;
+    max-height: 48px;
     font-size: 22px;
     padding-top: 10px;
   }
