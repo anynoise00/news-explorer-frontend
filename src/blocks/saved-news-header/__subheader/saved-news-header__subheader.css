@@ -1,0 +1,22 @@
+.saved-news-header__subheader {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  opacity: 0.5;
+  padding-bottom: 28px;
+}
+
+@media screen and (max-width: 1440px) {
+  .saved-news-header__subheader {
+    font-size: 14px;
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .saved-news-header__subheader {
+    font-size: 12px;
+  }
+}

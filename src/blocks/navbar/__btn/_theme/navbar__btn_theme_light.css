@@ -1,0 +1,7 @@
+.navbar__btn_theme_light {
+  border-color: #d1d2d6;
+}
+
+.navbar__btn_theme_light:hover {
+  border-color: #1a1b22;
+}

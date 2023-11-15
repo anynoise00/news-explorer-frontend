@@ -1,0 +1,20 @@
+.news-card__info-container {
+  display: grid;
+  grid-template-rows: repeat(3, auto) 1fr;
+  grid-template-areas: 'date' 'header' 'description' 'author';
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px 24px 24px;
+}
+
+@media screen and (max-width: 1440px) {
+  .news-card__info-container {
+    padding: 14px 16px 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news-card__info-container {
+    padding: 16px;
+  }
+}

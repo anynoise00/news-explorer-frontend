@@ -1,0 +1,5 @@
+@import url('../../blocks/section/section.css');
+
+@import url('../../blocks/preloader/preloader.css');
+@import url('../../blocks/preloader/__text/preloader__text.css');
+@import url('../../blocks/preloader/__loader/preloader__loader.css');

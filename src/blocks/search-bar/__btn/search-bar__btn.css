@@ -1,0 +1,22 @@
+.search-bar__btn {
+  position: relative;
+  right: -1px;
+  width: 168px;
+  height: 100%;
+  color: #fff;
+  border-radius: 32px;
+}
+
+@media screen and (max-width: 1440px) {
+  .search-bar__btn {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-bar__btn {
+    width: 100%;
+    max-width: 360px;
+    height: 56px;
+  }
+}

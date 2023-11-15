@@ -1,0 +1,19 @@
+.btn_type_submit {
+  background-color: #2f71e5;
+  color: #fff;
+}
+
+.btn_type_submit:hover {
+  background-color: #347eff;
+}
+
+.btn_type_submit:active {
+  background-color: #2a65cc;
+  opacity: 1;
+}
+
+.btn_type_submit:disabled {
+  background-color: #d1d2d6;
+  color: #b6bcbf;
+  cursor: default;
+}

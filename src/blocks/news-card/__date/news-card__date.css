@@ -1,0 +1,22 @@
+.news-card__date {
+  overflow: hidden;
+  text-overflow: nowrap;
+  grid-area: date;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 1440px) {
+  .news-card__date {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news-card__date {
+    font-size: 18px;
+  }
+}

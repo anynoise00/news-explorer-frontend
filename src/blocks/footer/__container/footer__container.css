@@ -1,0 +1,12 @@
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    width: 100%;
+    gap: 16px;
+  }
+}

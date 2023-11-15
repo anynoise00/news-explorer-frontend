@@ -1,0 +1,15 @@
+@import url('./vendor/styles/normalize.css');
+
+@import url('./vendor/fonts/Inter/inter.css');
+@import url('./vendor/fonts/Roboto/roboto.css');
+@import url('./vendor/fonts/Roboto_Slab/roboto_slab.css');
+@import url('./vendor/fonts/Source_Sans_3/source_sans_3.css');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}

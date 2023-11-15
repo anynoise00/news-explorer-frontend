@@ -1,0 +1,12 @@
+.navbar__link_selected {
+  box-sizing: border-box;
+  color: inherit;
+  border-bottom: 3px solid;
+  border-color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__link_selected {
+    border: 0;
+  }
+}

@@ -1,0 +1,7 @@
+.news-card__action-btn_type_bookmark {
+  background-image: url('../../../../images/icon_bookmark_normal.svg');
+}
+
+.news-card__action-btn_type_bookmark:hover {
+  background-image: url('../../../../images/icon_bookmark_hover.svg');
+}

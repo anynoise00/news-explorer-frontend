@@ -1,0 +1,21 @@
+.search__subheader {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: left;
+  max-width: 608px;
+  padding: 0 0 32px;
+}
+
+@media screen and (max-width: 1440px) {
+  .search__subheader {
+    max-width: 452px;
+    padding: 0 0 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search__subheader {
+    padding: 0 0 74px;
+  }
+}

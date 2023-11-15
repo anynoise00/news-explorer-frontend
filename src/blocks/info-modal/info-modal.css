@@ -1,0 +1,7 @@
+.info-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 43px 36px 51px;
+  color: #000;
+}

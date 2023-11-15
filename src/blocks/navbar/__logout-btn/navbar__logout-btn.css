@@ -1,0 +1,7 @@
+.navbar__logout-btn {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 16px;
+  padding: 0 16px;
+}

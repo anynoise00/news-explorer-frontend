@@ -1,0 +1,12 @@
+.link {
+  color: #2f71e5;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+.link:active {
+  opacity: 0.5;
+}

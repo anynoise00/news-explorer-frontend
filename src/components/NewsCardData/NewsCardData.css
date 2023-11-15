@@ -1,0 +1,7 @@
+@import url('../../blocks/news-card/__info-container/news-card__info-container.css');
+@import url('../../blocks/news-card/__link/news-card__link.css');
+@import url('../../blocks/news-card/__image/news-card__image.css');
+@import url('../../blocks/news-card/__date/news-card__date.css');
+@import url('../../blocks/news-card/__header/news-card__header.css');
+@import url('../../blocks/news-card/__description/news-card__description.css');
+@import url('../../blocks/news-card/__source/news-card__source.css');

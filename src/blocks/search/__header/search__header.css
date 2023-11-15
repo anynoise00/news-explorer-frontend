@@ -1,0 +1,26 @@
+.search__header {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 400;
+  font-family: 'Roboto Slab', serif;
+  text-align: left;
+  max-width: 702px;
+  padding: 80px 0 0;
+}
+
+@media screen and (max-width: 1440px) {
+  .search__header {
+    font-size: 36px;
+    line-height: 40px;
+    max-width: 425px;
+    padding: 38px 0 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search__header {
+    padding: 30px 0 0;
+  }
+}

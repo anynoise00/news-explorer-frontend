@@ -1,0 +1,14 @@
+.news-card__confirm-btn {
+  padding: 11px 26px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1440px) {
+  .news-card__confirm-btn {
+    padding: 11px 16px;
+  }
+}
