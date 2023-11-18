@@ -162,7 +162,10 @@ function App() {
           <Route
             path='/saved-news'
             element={
-              <ProtectedRoute loggedIn={loggedIn}>
+              <ProtectedRoute
+                loggedIn={loggedIn}
+                openLoginModal={openLoginModal}
+              >
                 <SavedNews onRemoveSavedArticle={removeSavedArticle} />
               </ProtectedRoute>
             }
