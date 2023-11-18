@@ -12,40 +12,71 @@ import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
 import InfoModal from '../InfoModal/InfoModal';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import mainApi from '../../utils/MainApi';
 
 function App() {
   const navigate = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [modal, setModal] = useState(undefined);
+
+  const [username, setUsername] = useState('Usuário');
   const [savedArticles, setSavedArticles] = useState([]);
 
-  function handleLogin() {
-    setLoggedIn(true);
-    closeModal();
+  function handleLogin(credentials) {
+    mainApi
+      .login(credentials)
+      .then((data) => {
+        localStorage.setItem('jwt', data.token);
+        signIn().then(() => {
+          openInfoModal(data.message);
+        });
+      })
+      .catch((err) => {
+        openInfoModal('Credenciais inválidas ou incorretas.');
+      });
   }
 
-  function handleLogout() {
+  function handleRegister(credentials) {
+    mainApi
+      .register(credentials)
+      .then((_) => {
+        openInfoModal(
+          'Cadastro concluído com sucesso!',
+          <Link className='link' onClick={openLoginModal}>
+            Entrar
+          </Link>
+        );
+      })
+      .catch((err) => {
+        openInfoModal('Falha ao se cadastrar.');
+      });
+  }
+
+  function signIn() {
+    return mainApi
+      .getCurrentUser()
+      .then((user) => {
+        setUsername(user.data.name);
+        mainApi.getSavedArticles().then((articles) => {
+          setSavedArticles(articles);
+        });
+        setLoggedIn(true);
+      })
+      .catch(() => {});
+  }
+
+  function signOut() {
+    localStorage.removeItem('jwt');
+    setSavedArticles([]);
     setLoggedIn(false);
     navigate('/');
   }
 
-  function handleRegister() {
-    setModal(
-      <InfoModal
-        onClose={closeModal}
-        header={'Cadastro concluído com sucesso!'}
-        info={
-          <Link className='link' onClick={openLoginModal}>
-            Entrar
-          </Link>
-        }
-      />
-    );
-  }
-
-  function openErrorModal(error) {
-    setModal(<InfoModal onClose={closeModal} header={error} />);
+  function openInfoModal(header, info = undefined) {
+    setModal(<InfoModal onClose={closeModal} header={header} info={info} />);
   }
 
   function openLoginModal() {
@@ -73,23 +104,33 @@ function App() {
   }
 
   function saveArticle(article) {
-    const articles = [article, ...savedArticles];
-    storeSavedArticles(articles);
+    mainApi
+      .saveArticle(article)
+      .then((a) => {
+        setSavedArticles([a.data, ...savedArticles]);
+      })
+      .catch(() => {
+        openInfoModal('Não foi possível salvar o artigo.');
+      });
   }
 
-  function removeSavedArticle(article) {
-    const articles = savedArticles.filter((a) => a.url !== article.url);
-    storeSavedArticles(articles);
-  }
+  function removeSavedArticle(articleId) {
+    mainApi
+      .deleteArticle(articleId)
+      .then(() => {
+        const articles = savedArticles.filter((a) => {
+          return a._id !== articleId;
+        });
 
-  function storeSavedArticles(articles) {
-    localStorage.setItem('savedArticles', JSON.stringify(articles));
-    setSavedArticles(articles);
+        setSavedArticles(articles);
+      })
+      .catch(() => {
+        openInfoModal('Não foi possível deletar o artigo.');
+      });
   }
 
   useEffect(() => {
-    const storedArticles = JSON.parse(localStorage.getItem('savedArticles'));
-    setSavedArticles(storedArticles ?? []);
+    signIn();
   }, []);
 
   useEffect(() => {
@@ -106,40 +147,43 @@ function App() {
 
   return (
     <div className='page'>
-      <Header
-        loggedIn={loggedIn}
-        onLogin={openLoginModal}
-        onLogout={handleLogout}
-      />
-      <Routes>
-        <Route
-          path='/saved-news'
-          element={
-            <ProtectedRoute loggedIn={loggedIn}>
-              <SavedNews
-                savedArticles={savedArticles}
+      <CurrentUserContext.Provider
+        value={{
+          name: username,
+          savedArticles: savedArticles,
+        }}
+      >
+        <Header
+          loggedIn={loggedIn}
+          onLogin={openLoginModal}
+          onLogout={signOut}
+        />
+        <Routes>
+          <Route
+            path='/saved-news'
+            element={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <SavedNews onRemoveSavedArticle={removeSavedArticle} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/'
+            element={
+              <Main
+                loggedIn={loggedIn}
+                onLoginClick={openLoginModal}
+                onError={openInfoModal}
+                onSaveArticle={saveArticle}
                 onRemoveSavedArticle={removeSavedArticle}
               />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/'
-          element={
-            <Main
-              loggedIn={loggedIn}
-              onLoginClick={openLoginModal}
-              onError={openErrorModal}
-              savedArticles={savedArticles}
-              onSaveArticle={saveArticle}
-              onRemoveSavedArticle={removeSavedArticle}
-            />
-          }
-        />
-      </Routes>
-      <Footer />
+            }
+          />
+        </Routes>
+        <Footer />
 
-      {modal && modal}
+        {modal && modal}
+      </CurrentUserContext.Provider>
     </div>
   );
 }

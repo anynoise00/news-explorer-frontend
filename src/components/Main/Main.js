@@ -35,16 +35,24 @@ function Main(props) {
     newsApi
       .getNews(q)
       .then((data) => {
-        const category = q[0].toUpperCase() + q.slice(1).toLowerCase();
+        const keyword = q[0].toUpperCase() + q.slice(1).toLowerCase();
 
         const filteredArticles = data.articles.filter(
           (a) => a.title !== '[Removed]'
         );
 
         const formattedArticles = filteredArticles.map((a) => {
-          a.category = category;
-          a.publishedAt = formatDate(new Date(a.publishedAt));
-          return a;
+          const formatted = {
+            keyword,
+            title: a.title,
+            text: a.description,
+            date: formatDate(new Date(a.publishedAt)),
+            source: a.source.name,
+            link: a.url,
+            image: a.urlToImage,
+          };
+
+          return formatted;
         });
 
         setArticles(formattedArticles);

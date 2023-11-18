@@ -13,8 +13,16 @@ import './RegisterModal.css';
 
 function RegisterModal(props) {
   const [email, setEmail] = useState({ value: '' });
-  const [username, setUsername] = useState({ value: '' });
   const [password, setPassword] = useState({ value: '' });
+  const [username, setUsername] = useState({ value: '' });
+
+  function handleRegisterSubmit() {
+    props.onSubmit({
+      email: email.value,
+      password: password.value,
+      name: username.value,
+    });
+  }
 
   return (
     <ModalWithForm
@@ -33,15 +41,6 @@ function RegisterModal(props) {
             error={email.error}
           />
           <FormInputField
-            type='text'
-            name='username'
-            label='Nome de usuário'
-            placeholder='Insira seu nome de usuário'
-            onChange={(e) => handleInputChange(e, setUsername, usernameOptions)}
-            value={username.value}
-            error={username.error}
-          />
-          <FormInputField
             type='password'
             name='password'
             label='Senha'
@@ -49,6 +48,15 @@ function RegisterModal(props) {
             onChange={(e) => handleInputChange(e, setPassword, passwordOptions)}
             value={password.value}
             error={password.error}
+          />
+          <FormInputField
+            type='text'
+            name='username'
+            label='Nome de usuário'
+            placeholder='Insira seu nome de usuário'
+            onChange={(e) => handleInputChange(e, setUsername, usernameOptions)}
+            value={username.value}
+            error={username.error}
           />
         </>
       }
@@ -60,8 +68,9 @@ function RegisterModal(props) {
           </Link>
         </p>
       }
-      submitBtnText='Inscreva-se'
       btnActive={email.valid && username.valid && password.valid}
+      submitBtnText='Inscreva-se'
+      onSubmit={handleRegisterSubmit}
     />
   );
 }

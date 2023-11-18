@@ -6,10 +6,10 @@ import './SavedNewsCard.css';
 function SavedNewsCard(props) {
   return (
     <li className='news-card'>
-      <div className='news-card__category'>{props.data.category}</div>
+      <div className='news-card__category'>{props.data.keyword}</div>
       <NewsCardActionButton
         type='remove'
-        message='Remove from saved'
+        message='Remover dos salvos'
         onActionConfirm={props.onRemoveSavedArticle}
       />
 

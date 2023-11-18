@@ -7,7 +7,7 @@ class MainApi {
   }
 
   login({ email, password }) {
-    return fetch(`${this._url}/signin`, {
+    return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -18,7 +18,7 @@ class MainApi {
   }
 
   register({ email, password, name }) {
-    return fetch(`${this._url}/signup`, {
+    return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -30,7 +30,7 @@ class MainApi {
   }
 
   getCurrentUser() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
         ...this._headers,
@@ -40,7 +40,7 @@ class MainApi {
   }
 
   getSavedArticles() {
-    return fetch(`${this._url}/articles`, {
+    return fetch(`${this._baseUrl}/articles`, {
       method: 'GET',
       headers: {
         ...this._headers,
@@ -50,18 +50,18 @@ class MainApi {
   }
 
   saveArticle(article) {
-    return fetch(`${this._url}/articles`, {
+    return fetch(`${this._baseUrl}/articles`, {
       method: 'POST',
       headers: {
         ...this._headers,
         Authorization: getAuthorization(),
-        body: JSON.stringify(article),
       },
+      body: JSON.stringify(article),
     }).then(checkResponse);
   }
 
   deleteArticle(id) {
-    return fetch(`${this._url}/articles/${id}`, {
+    return fetch(`${this._baseUrl}/articles/${id}`, {
       method: 'DELETE',
       headers: {
         ...this._headers,
