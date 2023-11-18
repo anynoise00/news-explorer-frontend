@@ -34,7 +34,7 @@ function App() {
       .then((data) => {
         localStorage.setItem('jwt', data.token);
         signIn().then(() => {
-          openInfoModal(data.message);
+          closeModals();
         });
       })
       .catch((err) => {
@@ -79,23 +79,23 @@ function App() {
   }
 
   function openInfoModal(header, info = undefined) {
-    closeModal();
+    closeModals();
     setInfoModal(
-      <InfoModal onClose={closeModal} header={header} info={info} />
+      <InfoModal onClose={closeModals} header={header} info={info} />
     );
   }
 
   function openLoginModal() {
-    closeModal();
+    closeModals();
     setLoginModalOpen(true);
   }
 
   function openRegisterModal() {
-    closeModal();
+    closeModals();
     setRegisterModalOpen(true);
   }
 
-  function closeModal() {
+  function closeModals() {
     setLoginModalOpen(false);
     setRegisterModalOpen(false);
     setInfoModal(undefined);
@@ -135,7 +135,7 @@ function App() {
 
   useEffect(() => {
     const escClose = (ev) => {
-      if (ev.key === 'Escape') closeModal();
+      if (ev.key === 'Escape') closeModals();
     };
 
     document.addEventListener('keydown', escClose);
@@ -190,7 +190,7 @@ function App() {
         {isLoginModalOpen && (
           <LoginModal
             onSubmit={handleLogin}
-            onClose={closeModal}
+            onClose={closeModals}
             onLinkClick={openRegisterModal}
             error={modalFormError}
           />
@@ -199,7 +199,7 @@ function App() {
         {isRegisterModalOpen && (
           <RegisterModal
             onSubmit={handleRegister}
-            onClose={closeModal}
+            onClose={closeModals}
             onLinkClick={openLoginModal}
             error={modalFormError}
           />
