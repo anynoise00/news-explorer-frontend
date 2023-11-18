@@ -12,15 +12,15 @@ function SavedNewsHeader(props) {
 
     if (keywords.length <= 0) return 'Nenhuma';
 
-    // only show 'e outras' se mais de 3 keywords
-    let uniqueKeywords = [...new Set(keywords)];
-    uniqueKeywords =
-      uniqueKeywords.slice(0, 2).join(', ') +
-      (uniqueKeywords.length - 2 > 0
-        ? ` e ${uniqueKeywords.length - 2} outras`
-        : '');
+    const uniqueKeywords = [...new Set(keywords)];
 
-    return uniqueKeywords;
+    const keywordMessage =
+      uniqueKeywords.length <= 3
+        ? uniqueKeywords.join(', ')
+        : uniqueKeywords.slice(0, 2).join(', ') +
+          ` e ${uniqueKeywords.length - 2} outra(s)`;
+
+    return keywordMessage;
   }
 
   return (
