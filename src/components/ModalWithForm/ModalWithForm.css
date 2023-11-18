@@ -6,3 +6,4 @@
 @import url('../../blocks/form/__body/form__body.css');
 @import url('../../blocks/form/__footer/form__footer.css');
 @import url('../../blocks/form/__submit-btn/form__submit-btn.css');
+@import url('../../blocks/form/__submit-error/form__submit-error.css');

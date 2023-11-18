@@ -16,6 +16,7 @@ function ModalWithForm(props) {
         <div className='form__body'>{props.body}</div>
 
         <div className='form__footer'>
+          {props.error && <p className='form__submit-error'>{props.error}</p>}
           <input
             type='submit'
             className='btn btn_type_submit form__submit-btn'

@@ -20,7 +20,10 @@ function App() {
   const navigate = useNavigate();
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [modal, setModal] = useState(undefined);
+  const [infoModal, setInfoModal] = useState(undefined);
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
+  const [modalFormError, setModalFormError] = useState('');
 
   const [username, setUsername] = useState('Usuário');
   const [savedArticles, setSavedArticles] = useState([]);
@@ -35,7 +38,7 @@ function App() {
         });
       })
       .catch((err) => {
-        openInfoModal('Credenciais inválidas ou incorretas.');
+        setModalFormError('Credenciais inválidas ou incorretas.');
       });
   }
 
@@ -51,7 +54,7 @@ function App() {
         );
       })
       .catch((err) => {
-        openInfoModal('Falha ao se cadastrar.');
+        setModalFormError('Falha ao se cadastrar.');
       });
   }
 
@@ -76,31 +79,28 @@ function App() {
   }
 
   function openInfoModal(header, info = undefined) {
-    setModal(<InfoModal onClose={closeModal} header={header} info={info} />);
+    closeModal();
+    setInfoModal(
+      <InfoModal onClose={closeModal} header={header} info={info} />
+    );
   }
 
   function openLoginModal() {
-    setModal(
-      <LoginModal
-        onSubmit={handleLogin}
-        onClose={closeModal}
-        onLinkClick={openRegisterModal}
-      />
-    );
+    closeModal();
+    setLoginModalOpen(true);
   }
 
   function openRegisterModal() {
-    setModal(
-      <RegisterModal
-        onSubmit={handleRegister}
-        onClose={closeModal}
-        onLinkClick={openLoginModal}
-      />
-    );
+    closeModal();
+    setRegisterModalOpen(true);
   }
 
   function closeModal() {
-    setModal(undefined);
+    setLoginModalOpen(false);
+    setRegisterModalOpen(false);
+    setInfoModal(undefined);
+
+    setModalFormError('');
   }
 
   function saveArticle(article) {
@@ -185,7 +185,25 @@ function App() {
         </Routes>
         <Footer />
 
-        {modal && modal}
+        {infoModal && infoModal}
+
+        {isLoginModalOpen && (
+          <LoginModal
+            onSubmit={handleLogin}
+            onClose={closeModal}
+            onLinkClick={openRegisterModal}
+            error={modalFormError}
+          />
+        )}
+
+        {isRegisterModalOpen && (
+          <RegisterModal
+            onSubmit={handleRegister}
+            onClose={closeModal}
+            onLinkClick={openLoginModal}
+            error={modalFormError}
+          />
+        )}
       </CurrentUserContext.Provider>
     </div>
   );
