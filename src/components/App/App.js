@@ -16,17 +16,18 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import mainApi from '../../utils/MainApi';
 import {
-  MSG_ARTICLE_DELETE_FAIL,
-  MSG_ARTICLE_SAVE_FAIL,
-  MSG_FAILED_REGISTER,
   MSG_INVALID_CREDENTIALS,
-  MSG_SUCCESFUL_REGISTER,
+  MSG_SUCCESSFUL_REGISTER,
+  MSG_FAILED_REGISTER,
+  MSG_ARTICLE_SAVE_FAIL,
+  MSG_ARTICLE_DELETE_FAIL,
 } from '../../utils/constants';
 
 function App() {
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
+
   const [infoModal, setInfoModal] = useState(undefined);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
@@ -72,10 +73,12 @@ function App() {
         setUsername(user.data.name);
         mainApi.getSavedArticles().then((articles) => {
           setSavedArticles(articles);
+          setLoggedIn(true);
         });
-        setLoggedIn(true);
       })
-      .catch(() => {});
+      .catch(() => {
+        setLoggedIn(false);
+      });
   }
 
   function signOut() {
