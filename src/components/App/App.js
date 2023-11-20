@@ -15,6 +15,13 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import mainApi from '../../utils/MainApi';
+import {
+  MSG_ARTICLE_DELETE_FAIL,
+  MSG_ARTICLE_SAVE_FAIL,
+  MSG_FAILED_REGISTER,
+  MSG_INVALID_CREDENTIALS,
+  MSG_SUCCESFUL_REGISTER,
+} from '../../utils/constants';
 
 function App() {
   const navigate = useNavigate();
@@ -38,7 +45,7 @@ function App() {
         });
       })
       .catch((err) => {
-        setModalFormError('Credenciais inválidas ou incorretas.');
+        setModalFormError(MSG_INVALID_CREDENTIALS);
       });
   }
 
@@ -47,14 +54,14 @@ function App() {
       .register(credentials)
       .then((_) => {
         openInfoModal(
-          'Cadastro concluído com sucesso!',
+          MSG_SUCCESSFUL_REGISTER,
           <Link className='link' onClick={openLoginModal}>
             Entrar
           </Link>
         );
       })
       .catch((err) => {
-        setModalFormError('Falha ao se cadastrar.');
+        setModalFormError(MSG_FAILED_REGISTER);
       });
   }
 
@@ -110,7 +117,7 @@ function App() {
         setSavedArticles([a.data, ...savedArticles]);
       })
       .catch(() => {
-        openInfoModal('Não foi possível salvar o artigo.');
+        openInfoModal(MSG_ARTICLE_SAVE_FAIL);
       });
   }
 
@@ -125,7 +132,7 @@ function App() {
         setSavedArticles(articles);
       })
       .catch(() => {
-        openInfoModal('Não foi possível deletar o artigo.');
+        openInfoModal(MSG_ARTICLE_DELETE_FAIL);
       });
   }
 
