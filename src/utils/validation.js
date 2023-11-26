@@ -10,6 +10,17 @@ const emailOptions = {
   },
 };
 
+const passwordOptions = {
+  required: {
+    value: true,
+    message: 'Campo obrigatório',
+  },
+  minLength: {
+    value: 8,
+    message: 'Senha muito curta',
+  },
+};
+
 const usernameOptions = {
   required: {
     value: true,
@@ -22,17 +33,6 @@ const usernameOptions = {
   maxLength: {
     value: 16,
     message: 'Nome de usuário muito grande',
-  },
-};
-
-const passwordOptions = {
-  required: {
-    value: true,
-    message: 'Campo obrigatório',
-  },
-  minLength: {
-    value: 2,
-    message: 'Senha muito curta',
   },
 };
 

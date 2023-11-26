@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import NewsCardActionButton from '../NewsCardActionButton/NewsCardActionButton';
 import NewsCardData from '../NewsCardData/NewsCardData';
 
 import './NewsCard.css';
 
 function NewsCard(props) {
+  const navigate = useNavigate();
+
   function handleActionConfirm() {
     if (!props.loggedIn) {
       props.onLoginClick();
@@ -11,7 +14,7 @@ function NewsCard(props) {
     }
 
     props.bookmarked
-      ? props.onRemoveSavedArticle(props.data)
+      ? navigate('/saved-news')
       : props.onSaveArticle(props.data);
   }
 
@@ -22,9 +25,9 @@ function NewsCard(props) {
         message={
           props.loggedIn
             ? props.bookmarked
-              ? 'Remove from saved'
-              : 'Save article'
-            : 'Sign in to save articles'
+              ? 'Ver artigos salvos'
+              : 'Salvar artigo'
+            : 'Logue-se para salvar artigos'
         }
         onActionConfirm={handleActionConfirm}
       />

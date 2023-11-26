@@ -12,89 +12,141 @@ import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
 import InfoModal from '../InfoModal/InfoModal';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
+import mainApi from '../../utils/MainApi';
+import {
+  MSG_INVALID_CREDENTIALS,
+  MSG_SUCCESSFUL_REGISTER,
+  MSG_FAILED_REGISTER,
+  MSG_ARTICLE_SAVE_FAIL,
+  MSG_ARTICLE_DELETE_FAIL,
+} from '../../utils/constants';
+import { getAuthorization } from '../../utils/helpers';
 
 function App() {
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [modal, setModal] = useState(undefined);
+  const [loggedIn, setLoggedIn] = useState(true);
+
+  const [infoModal, setInfoModal] = useState(undefined);
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
+  const [modalFormError, setModalFormError] = useState('');
+
+  const [username, setUsername] = useState('Usuário');
   const [savedArticles, setSavedArticles] = useState([]);
 
-  function handleLogin() {
-    setLoggedIn(true);
-    closeModal();
+  function handleLogin(credentials) {
+    mainApi
+      .login(credentials)
+      .then((data) => {
+        localStorage.setItem('jwt', data.token);
+        signIn().then(() => {
+          closeModals();
+        });
+      })
+      .catch((err) => {
+        setModalFormError(MSG_INVALID_CREDENTIALS);
+      });
   }
 
-  function handleLogout() {
+  function handleRegister(credentials) {
+    mainApi
+      .register(credentials)
+      .then((_) => {
+        openInfoModal(
+          MSG_SUCCESSFUL_REGISTER,
+          <Link className='link' onClick={openLoginModal}>
+            Entrar
+          </Link>
+        );
+      })
+      .catch((err) => {
+        setModalFormError(MSG_FAILED_REGISTER);
+      });
+  }
+
+  function signIn() {
+    return mainApi
+      .getCurrentUser()
+      .then((user) => {
+        setUsername(user.data.name);
+        mainApi.getSavedArticles().then((articles) => {
+          setSavedArticles(articles);
+          setLoggedIn(true);
+        });
+      })
+      .catch(() => {
+        setLoggedIn(false);
+      });
+  }
+
+  function signOut() {
+    localStorage.removeItem('jwt');
+    setSavedArticles([]);
     setLoggedIn(false);
     navigate('/');
   }
 
-  function handleRegister() {
-    setModal(
-      <InfoModal
-        onClose={closeModal}
-        header={'Cadastro concluído com sucesso!'}
-        info={
-          <Link className='link' onClick={openLoginModal}>
-            Entrar
-          </Link>
-        }
-      />
+  function openInfoModal(header, info = undefined) {
+    closeModals();
+    setInfoModal(
+      <InfoModal onClose={closeModals} header={header} info={info} />
     );
-  }
-
-  function openErrorModal(error) {
-    setModal(<InfoModal onClose={closeModal} header={error} />);
   }
 
   function openLoginModal() {
-    setModal(
-      <LoginModal
-        onSubmit={handleLogin}
-        onClose={closeModal}
-        onLinkClick={openRegisterModal}
-      />
-    );
+    closeModals();
+    setLoginModalOpen(true);
   }
 
   function openRegisterModal() {
-    setModal(
-      <RegisterModal
-        onSubmit={handleRegister}
-        onClose={closeModal}
-        onLinkClick={openLoginModal}
-      />
-    );
+    closeModals();
+    setRegisterModalOpen(true);
   }
 
-  function closeModal() {
-    setModal(undefined);
+  function closeModals() {
+    setLoginModalOpen(false);
+    setRegisterModalOpen(false);
+    setInfoModal(undefined);
+
+    setModalFormError('');
   }
 
   function saveArticle(article) {
-    const articles = [article, ...savedArticles];
-    storeSavedArticles(articles);
+    mainApi
+      .saveArticle(article)
+      .then((a) => {
+        setSavedArticles([a.data, ...savedArticles]);
+      })
+      .catch(() => {
+        openInfoModal(MSG_ARTICLE_SAVE_FAIL);
+      });
   }
 
-  function removeSavedArticle(article) {
-    const articles = savedArticles.filter((a) => a.url !== article.url);
-    storeSavedArticles(articles);
-  }
+  function removeSavedArticle(articleId) {
+    mainApi
+      .deleteArticle(articleId)
+      .then(() => {
+        const articles = savedArticles.filter((a) => {
+          return a._id !== articleId;
+        });
 
-  function storeSavedArticles(articles) {
-    localStorage.setItem('savedArticles', JSON.stringify(articles));
-    setSavedArticles(articles);
+        setSavedArticles(articles);
+      })
+      .catch(() => {
+        openInfoModal(MSG_ARTICLE_DELETE_FAIL);
+      });
   }
 
   useEffect(() => {
-    const storedArticles = JSON.parse(localStorage.getItem('savedArticles'));
-    setSavedArticles(storedArticles ?? []);
+    if (getAuthorization()) signIn();
   }, []);
 
   useEffect(() => {
     const escClose = (ev) => {
-      if (ev.key === 'Escape') closeModal();
+      if (ev.key === 'Escape') closeModals();
     };
 
     document.addEventListener('keydown', escClose);
@@ -106,40 +158,64 @@ function App() {
 
   return (
     <div className='page'>
-      <Header
-        loggedIn={loggedIn}
-        onLogin={openLoginModal}
-        onLogout={handleLogout}
-      />
-      <Routes>
-        <Route
-          path='/saved-news'
-          element={
-            <ProtectedRoute loggedIn={loggedIn}>
-              <SavedNews
-                savedArticles={savedArticles}
+      <CurrentUserContext.Provider
+        value={{
+          name: username,
+          savedArticles: savedArticles,
+        }}
+      >
+        <Header
+          loggedIn={loggedIn}
+          onLogin={openLoginModal}
+          onLogout={signOut}
+        />
+        <Routes>
+          <Route
+            path='/saved-news'
+            element={
+              <ProtectedRoute
+                loggedIn={loggedIn}
+                openLoginModal={openLoginModal}
+              >
+                <SavedNews onRemoveSavedArticle={removeSavedArticle} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/'
+            element={
+              <Main
+                loggedIn={loggedIn}
+                onLoginClick={openLoginModal}
+                onError={openInfoModal}
+                onSaveArticle={saveArticle}
                 onRemoveSavedArticle={removeSavedArticle}
               />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/'
-          element={
-            <Main
-              loggedIn={loggedIn}
-              onLoginClick={openLoginModal}
-              onError={openErrorModal}
-              savedArticles={savedArticles}
-              onSaveArticle={saveArticle}
-              onRemoveSavedArticle={removeSavedArticle}
-            />
-          }
-        />
-      </Routes>
-      <Footer />
+            }
+          />
+        </Routes>
+        <Footer />
 
-      {modal && modal}
+        {infoModal && infoModal}
+
+        {isLoginModalOpen && (
+          <LoginModal
+            onSubmit={handleLogin}
+            onClose={closeModals}
+            onLinkClick={openRegisterModal}
+            error={modalFormError}
+          />
+        )}
+
+        {isRegisterModalOpen && (
+          <RegisterModal
+            onSubmit={handleRegister}
+            onClose={closeModals}
+            onLinkClick={openLoginModal}
+            error={modalFormError}
+          />
+        )}
+      </CurrentUserContext.Provider>
     </div>
   );
 }

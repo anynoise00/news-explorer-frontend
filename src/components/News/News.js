@@ -2,9 +2,12 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import NewsCard from '../NewsCard/NewsCard';
 
 import './News.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function News(props) {
+  const currentUser = useContext(CurrentUserContext);
+
   const initialArticlesQnt = 3;
   const [maxArticles, setMaxArticles] = useState(initialArticlesQnt);
 
@@ -21,13 +24,12 @@ function News(props) {
             <NewsCard
               key={`article-${i}`}
               data={article}
-              bookmarked={props.savedArticles.some(
-                (a) => a.url === article.url
+              bookmarked={currentUser.savedArticles.some(
+                (a) => a.link === article.link
               )}
               loggedIn={props.loggedIn}
               onLoginClick={props.onLoginClick}
               onSaveArticle={props.onSaveArticle}
-              onRemoveSavedArticle={props.onRemoveSavedArticle}
             />
           );
         })}

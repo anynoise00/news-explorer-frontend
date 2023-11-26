@@ -1,0 +1,10 @@
+.form__submit-error {
+  position: absolute;
+  top: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ff0000;
+  width: 100%;
+  text-align: center;
+}

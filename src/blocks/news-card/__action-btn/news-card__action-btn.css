@@ -10,4 +10,10 @@
 
 .news-card__action-btn:hover {
   background-color: #fff;
+  opacity: 1;
+  cursor: default;
+}
+
+.news-card__action-btn:active {
+  opacity: 1;
 }

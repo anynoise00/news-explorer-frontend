@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import iconLogoutWhite from '../../images/icon_logout-white.svg';
 import iconLogoutBlack from '../../images/icon_logout-black.svg';
+
 import './Navigation.css';
 
 function Navigation(props) {
+  const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
 
   const [collapsed, setCollapsed] = useState(true);
@@ -67,7 +70,7 @@ function Navigation(props) {
               }`}
               onClick={props.onLogout}
             >
-              {'Usuário'}
+              {currentUser.name}
               <img
                 alt='Ícone de logout'
                 src={

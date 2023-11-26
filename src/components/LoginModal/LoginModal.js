@@ -14,6 +14,10 @@ function LoginModal(props) {
   const [email, setEmail] = useState({ value: '' });
   const [password, setPassword] = useState({ value: '' });
 
+  function handleLoginSubmit() {
+    props.onSubmit({ email: email.value, password: password.value });
+  }
+
   return (
     <ModalWithForm
       {...props}
@@ -49,8 +53,9 @@ function LoginModal(props) {
           </Link>
         </p>
       }
-      submitBtnText='Entrar'
       btnActive={email.valid && password.valid}
+      submitBtnText='Entrar'
+      onSubmit={handleLoginSubmit}
     />
   );
 }
