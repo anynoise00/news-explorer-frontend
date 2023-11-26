@@ -22,6 +22,7 @@ import {
   MSG_ARTICLE_SAVE_FAIL,
   MSG_ARTICLE_DELETE_FAIL,
 } from '../../utils/constants';
+import { getAuthorization } from '../../utils/helpers';
 
 function App() {
   const navigate = useNavigate();
@@ -140,7 +141,7 @@ function App() {
   }
 
   useEffect(() => {
-    signIn();
+    if (getAuthorization()) signIn();
   }, []);
 
   useEffect(() => {
