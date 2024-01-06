@@ -27,7 +27,7 @@ import { getAuthorization } from '../../utils/helpers';
 function App() {
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [infoModal, setInfoModal] = useState(undefined);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -141,7 +141,11 @@ function App() {
   }
 
   useEffect(() => {
-    if (getAuthorization()) signIn();
+    if (getAuthorization()) {
+      signIn();
+    } else {
+      signOut();
+    }
   }, []);
 
   useEffect(() => {
