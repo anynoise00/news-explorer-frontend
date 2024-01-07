@@ -27,7 +27,7 @@ import { getAuthorization } from '../../utils/helpers';
 function App() {
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const [infoModal, setInfoModal] = useState(undefined);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -72,10 +72,14 @@ function App() {
       .getCurrentUser()
       .then((user) => {
         setUsername(user.data.name);
-        mainApi.getSavedArticles().then((articles) => {
-          setSavedArticles(articles);
-          setLoggedIn(true);
-        });
+        mainApi
+          .getSavedArticles()
+          .then((articles) => {
+            setSavedArticles(articles);
+          })
+          .finally(() => {
+            setLoggedIn(true);
+          });
       })
       .catch(() => {
         setLoggedIn(false);
