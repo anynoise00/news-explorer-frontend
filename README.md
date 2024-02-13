@@ -1,7 +1,6 @@
 # News Explorer
 
 ![Front page image](./assets/img/front_page.png)
-![Search results image](./assets/img/search_results.png)
 
 Um website onde os usuários podem pesquisar por diversas notícias e salvar suas favoritas.
 
