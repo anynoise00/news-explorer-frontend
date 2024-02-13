@@ -1,11 +1,23 @@
 # News Explorer
+![Front page image](./assets/img/frontpage.png)
+NewsExplorer is a website where users can search for news of any topic and save the ones they like to read later.
 
-![Front page image](./assets/img/front_page.png)
+## About
+This project was made as the final project from TripleTen's online web development bootcamp.
+In this project I applied everything that I learned about React and front-end development.
 
-Um website onde os usuários podem pesquisar por diversas notícias e salvar suas favoritas.
+There's also the back-end repository for this project, and you can check it [here](https://github.com/anynoise00/news-explorer-backend).
 
-Este projeto foi feito usando o framework React.js para criar um site responsivo e também para proteger certas rotas de usuários não logados.
+### Click [here](https://newsexplorer.jumpingcrab.com/) to visit the website.
 
-O login e registro ainda não estão funcionais, então você pode logar-se usando qualquer e-mail e senha, sem ser necessário um registro.
+You can use the this account to check the website without needing to register:
+```
+Login: usuario@mail.com
+Password: senhasenha
+```
 
-Você pode visitar o site no seguinte [link](https://newsexplorer.jumpingcrab.com/).
+## Technologies
+The following tools where used for building this project:
+- [Node.js](https://nodejs.org/en/)
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
