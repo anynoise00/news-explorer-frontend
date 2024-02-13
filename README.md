@@ -1,8 +1,10 @@
 # News Explorer
 ![Front page image](./assets/img/frontpage.png)
-NewsExplorer is a website where users can search for news of any topic and save the ones they like to read later.
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/anynoise00/news-explorer-frontend/blob/main/LICENSE)  
 
 ## About
+NewsExplorer is a website where users can search for news of any topic and save the ones they like to read later.  
+
 This project was made as the final project from TripleTen's online web development bootcamp.
 In this project I applied everything that I learned about React and front-end development.
 
@@ -16,8 +18,13 @@ Login: usuario@mail.com
 Password: senhasenha
 ```
 
+## Mobile layout
+<img src="./assets/img/mobile-1.jpg" width="300" alt="Mobile image 1"> <img src="./assets/img/mobile-2.jpg" width="300" alt="Mobile image 2"> <img src="./assets/img/mobile-3.jpg" width="300" alt="Mobile image 3">
+
 ## Technologies
 The following tools where used for building this project:
-- [Node.js](https://nodejs.org/en/)
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/en/main)
+- [Node.js](https://nodejs.org/en/)
+- HTML, CSS & JavaScript
+- BEM methodology
