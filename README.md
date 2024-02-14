@@ -1,5 +1,5 @@
 # News Explorer
-![Front page image](./assets/img/frontpage.png)
+![Front page image](./assets/img/frontpage.png)  
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/anynoise00/news-explorer-frontend/blob/main/LICENSE)  
 
 ## About
@@ -25,7 +25,6 @@ Password: senhasenha
 The following tools where used for building this project:
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/en/main)
-- [Node.js](https://nodejs.org/en/)
 - HTML, CSS & JavaScript
 - BEM methodology
 
