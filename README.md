@@ -19,7 +19,7 @@ Password: senhasenha
 ```
 
 ## Mobile layout
-<img src="./assets/img/mobile-1.jpg" width="300" alt="Mobile image 1"> <img src="./assets/img/mobile-2.jpg" width="300" alt="Mobile image 2"> <img src="./assets/img/mobile-3.jpg" width="300" alt="Mobile image 3">
+<img src="./assets/img/mobile-1.jpg" width="200" alt="Mobile image 1"> <img src="./assets/img/mobile-2.jpg" width="200" alt="Mobile image 2"> <img src="./assets/img/mobile-3.jpg" width="200" alt="Mobile image 3">
 
 ## Technologies
 The following tools where used for building this project:
