@@ -14,7 +14,7 @@ function About(props) {
         <h3 className='about__header'>Sobre o autor</h3>
         <p className='about__text'>
           Olá! Me chamo Vinícius, e acabo de me tornar um desenvolvedor web
-          full-stack com ajuda do bootcamp da TripleTen.
+          full-stack com ajuda do bootcamp de desenvolvimento web da TripleTen.
         </p>
         <p className='about__text'>
           Desde o ano passado venho desenvolvendo minhas habilidades como um
@@ -24,9 +24,7 @@ function About(props) {
         </p>
         <p className='about__text'>
           Esse website foi feito como o projeto final do bootcamp da TripleTen,
-          onde apliquei tudo que aprendi ao longo do ano de 2023. O projeto usa
-          todas as tecnologias faladas acima além de também utilizar a
-          metodologia BEM, Git e web design responsivo.
+          onde apliquei tudo que aprendi ao longo do ano de 2023.
         </p>
       </div>
     </div>
