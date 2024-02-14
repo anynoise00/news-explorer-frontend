@@ -28,3 +28,7 @@ The following tools where used for building this project:
 - [Node.js](https://nodejs.org/en/)
 - HTML, CSS & JavaScript
 - BEM methodology
+
+## Credits
+This projects uses [TripleTen](https://tripleten.com/)'s figma template  
+[![Figma Badge](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/pjv6Im0hLJ0Rny2zSYZXQ3/Seu-projeto-final-pt?type=design&node-id=0-1&mode=design&t=PEhFyr7EpFBRQt42-0)
