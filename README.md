@@ -10,7 +10,7 @@ In this project I applied everything that I learned about React and front-end de
 
 There's also the back-end repository for this project, check it [here](https://github.com/anynoise00/news-explorer-backend).
 
-### Click [here](https://newsexplorer.jumpingcrab.com/) to visit the website.
+### Click [here](https://newsexplorer.anynoise.dev) to visit the website.
 
 You can use the account below to check the website without needing to register:
 ```
