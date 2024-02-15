@@ -72,7 +72,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: `https://api.newsexplorer.jumpingcrab.com`,
+  baseUrl: `https://api-newsexplorer.anynoise.dev`,
   headers: {
     'Content-Type': 'application/json',
   },
