@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/anynoise00/news-explorer-frontend/blob/main/LICENSE)  
 
 ## About
-NewsExplorer is a website where users can search for news of any topic and save the ones they like to read later.  
+NewsExplorer is a website where users can search for news of any topic and bookmark the ones they like. 
 
 This is the front-end of the project was made as the final project from TripleTen's online web development bootcamp.
 In this project I applied everything that I learned about React and front-end development, such as routing, authentication and server integration.
